@@ -6,11 +6,13 @@ RUN apt update && apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgs
 RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 COPY zabbix_server.conf /etc/zabbix/zabbix_server.conf
-COPY zabbix.conf /etc/nginx/conf.d
+COPY zabbix.conf /etc/nginx/conf.d/zabbix.conf
 
 RUN zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | psql "<ВСТАВИТЬ ССЫЛКУ> dbname=zabbix" -U zabbix
 
 RUN chmod -R 777 /root
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 STOPSIGNAL SIGQUIT
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
