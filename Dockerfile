@@ -1,6 +1,5 @@
 FROM debian:latest
 
-ARG DB_PASSWORD
 ARG NEON_URL
 
 RUN apt update && apt install wget curl -y
