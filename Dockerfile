@@ -1,7 +1,5 @@
 FROM debian:latest
 
-ARG NEON_URL
-
 RUN apt update && apt install wget curl -y
 RUN curl -fsSL https://tailscale.com/install.sh | sh
 RUN wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb && \
@@ -35,10 +33,6 @@ ENV DB_PASSWORD=${DB_PASSWORD}
 RUN python3 /usr/local/bin/replace_zb_conf.py
 
 RUN mkdir -p /etc/supervisor/conf.d
-
-ENV PGPASSWORD=${DB_PASSWORD}
-ENV NEON_URL=${NEON_URL}
-RUN zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | psql "sslmode=require host=$NEON_URL dbname=zabbix" -U zabbix
 
 RUN chmod -R 777 /root
 
