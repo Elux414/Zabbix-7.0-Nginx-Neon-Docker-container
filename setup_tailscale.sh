@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Запуск Tailscale daemon и socks5 прокси
-/usr/sbin/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
+# Запуск Tailscale daemon
+/usr/sbin/tailscaled --tun=userspace-networking &
 
 # Ожидание запуска Tailscale
 sleep 10
