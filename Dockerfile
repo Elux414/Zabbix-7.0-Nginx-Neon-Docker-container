@@ -25,7 +25,7 @@ COPY zabbix.conf /etc/nginx/conf.d/zabbix.conf
 RUN rm /etc/zabbix/zabbix_agentd.conf
 COPY zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf
 COPY replace_zb_conf.py /usr/local/bin/replace_zb_conf.py
-RUN chmod +x /usr/local/bin/replace_config.py
+RUN chmod +x /usr/local/bin/replace_zb_conf.py
 
 ARG DB_HOST
 ARG DB_PASSWORD
