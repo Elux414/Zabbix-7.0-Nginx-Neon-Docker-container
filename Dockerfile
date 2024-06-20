@@ -38,7 +38,7 @@ RUN python3 /usr/local/bin/replace_zb_conf.py
 RUN mkdir -p /etc/supervisor/conf.d
 
 ENV PGPASSWORD=${DB_PASSWORD}
-ENV HOST_DB=${NEON_URL}
+ENV NEON_URL=${NEON_URL}
 RUN zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | psql "sslmode=require host=$NEON_URL dbname=zabbix" -U zabbix
 
 RUN chmod -R 777 /root
