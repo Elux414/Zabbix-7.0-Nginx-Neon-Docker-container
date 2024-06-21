@@ -4,7 +4,7 @@ RUN apt update && apt install wget curl -y
 RUN curl -fsSL https://tailscale.com/install.sh | sh
 RUN wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb && \
     dpkg --force-bad-path -i zabbix-release_7.0-1+debian12_all.deb
-RUN apt update && apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-nginx-conf zabbix-sql-scripts zabbix-agent postgresql-client supervisor python3 -y
+RUN apt update && apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-nginx-conf zabbix-agent postgresql-client supervisor python3 -y
 RUN apt update && apt install -y locales
 RUN sed -i '/ru_RU.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen ru_RU.UTF-8
