@@ -20,7 +20,7 @@
    ```
 2. Выберите "New", далее "Web Service" (для Render).
 3. Прокрутите страницу вниз, найдите строку "Environment Variables".
-4. Указывайте следующие переменные - NEON_URL=<ссылка на БД Neon>, DB_HOST=<ссылка на БД Neon>, DB_PASSWORD=<пароль для пользователя zabbix>, AUTH_KEY=<ключ авторизации Tailscale>.
+4. Указывайте следующие переменные - NEON_URL=<ссылка на БД Neon>, DB_HOST=<ссылка на БД Neon>, DB_PASSWORD=<пароль для пользователя zabbix>, AUTH_KEY=<ключ авторизации Tailscale>, PORT=80.
 5. Сделайте деплой на Render или ином хостинге, те кто разворачивают на своем сервере:
    ```bash
    docker build --build-arg NEON_URL=<ссылка на БД Neon> --build-arg DB_HOST=<ссылка на БД Neon> --build-arg DB_PASSWORD=<пароль для пользователя zabbix> --build-arg AUTH_KEY=<ключ авторизации Tailscale> -t zb-neon .
